@@ -39,7 +39,7 @@ const headerAppender = (selector) => {
 
 const target = document.querySelector(`${selector}`)
 
-target.appendChild(Header())
+target.appendChild(Header('Black Desert Online', 'Sept 13, 1996', '88'))
 return target
 }  
 // TASK 2

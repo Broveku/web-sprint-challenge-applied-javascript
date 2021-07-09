@@ -3,12 +3,14 @@ import axios from "axios";
 const Tabs = (topics) => {
 
 const topicsDiv = document.createElement('div')
+topicsDiv.classList.add('topics')
 
 topics.forEach(element => {
   const newTopics = document.createElement('div')
   newTopics.classList.add('tab')
   newTopics.textContent = element
   topicsDiv.appendChild(newTopics)
+  return newTopics
 });
  return topicsDiv
 
@@ -53,8 +55,9 @@ axios.get('http://localhost:5000/api/topics')
   })
 
 
-  
+
 }
+
 
 
 
