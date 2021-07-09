@@ -41,6 +41,10 @@ author.appendChild(imgContainer)
 author.appendChild(bySpan)
 imgContainer.appendChild(imgURL)
 
+cardContainer.addEventListener('click', function(){
+  console.log(article.headline)
+})
+
 return cardContainer
 }
 
@@ -55,17 +59,17 @@ const cardAppender = (selector) => {
   //
   const target = document.querySelector(`${selector}`);
 
-  axios.get("http://localhost:5000/api/articles").then(({ data }) => {
+  axios.get("http://localhost:5000/api/articles")
+  .then(({ data }) => {
     Object.keys(data.articles).map((key) => {
       data.articles[key].map((article) => {
         const card = Card(article);
         target.appendChild(card);
-      });
-     
+      });    
     });
-
-  
+    
   });
+  
 };
     
 
