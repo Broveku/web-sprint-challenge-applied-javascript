@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Tabs = (topics) => {
 
 const topicsDiv = document.createElement('div')
@@ -10,7 +12,7 @@ topics.forEach(element => {
 });
  return topicsDiv
 
-
+}
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -25,7 +27,7 @@ topics.forEach(element => {
   //   <div class="tab">technology</div>
   // </div>
   //
-}
+
 
 const tabsAppender = (selector) => {
   // TASK 4
@@ -35,6 +37,25 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+const target = document.querySelector(`${selector}`)
+
+axios.get('http://localhost:5000/api/topics')
+  .then(res => {
+    const tabTopics = Tabs(res.data.topics)
+    
+    return tabTopics
+  })
+  .then (tabTopics =>{
+    target.appendChild(tabTopics)
+  })
+  .catch(err =>{
+    console.log(err)
+  })
+
+
+  
 }
+
+
 
 export { Tabs, tabsAppender }
